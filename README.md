@@ -26,3 +26,5 @@ Line 256 -> Access java code -> slots?
 ### ADD
 
 Run in background but not forever
+
+install zenity on linux too
