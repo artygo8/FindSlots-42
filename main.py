@@ -56,7 +56,7 @@ if __name__ == "__main__":
         data_index_url = refresh.soup.find_all(find_slot)[0]["data-index-url"]
         json_file_link = begin_link + data_index_url
         print(json_file_link)
-        json = ms.Browser().get(json_file_link).json()
+        json = browser.get(json_file_link).json() #By using same browser with who we loggid in, no problem here
         print(json)
         exit()
         time.sleep(60)
