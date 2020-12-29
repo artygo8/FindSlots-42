@@ -50,13 +50,15 @@ if __name__ == "__main__":
         print("Error: login or password")
         exit()
 
-    while True:
+    json = []
+    while json == []:
         refresh = browser.get(new_page.url)
-        show_page(refresh.soup)#0 after Intra project slots equals to 0 notifications not slots I believe..
+        #show_page(refresh.soup)#0 after Intra project slots equals to 0 notifications not slots I believe..
         data_index_url = refresh.soup.find_all(find_slot)[0]["data-index-url"]
         json_file_link = begin_link + data_index_url
-        print(json_file_link)
+        #print(json_file_link)
         json = browser.get(json_file_link).json() #By using same browser with who we loggid in, no problem here
         print(json)
-        exit()
         time.sleep(60)
+
+    os.system('zenity --warning --text="SLOT FOUND" --no-wrap') #Notify if slot found
