@@ -17,11 +17,12 @@
 
 How to get number of available slots out of html file? 
 
-Slots.html is example of html with no slots found.
+Slot.html is example of html with slots found and noslot.html html eith no slots found.
 
-Line: 192 -> first link to json page -> slots string? What is doing right now, no slots found returns empty list
+Line 196 <div data-duration="1".... >> if no slots stops at id='calendar' | if slots found continues with class="fc fc-unthemed fc-ltr"
+-> tag "data-full" can only be found in slot.html and indicates slot find
 
-Line 256 -> Access java code -> slots?
+-> Code could function but was not able to test it yet
 
 ### ADD
 
