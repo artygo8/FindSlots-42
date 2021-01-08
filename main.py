@@ -50,10 +50,10 @@ if __name__ == "__main__":
         print("Error: login or password")
         exit()
 
-    slot = [];
+    slot = []
     while slot == []:
         refresh = browser.get(new_page.url)
         slot = refresh.soup.find_all(find_slot)
         time.sleep(60)
 
-    os.system('zenity --warning --text="SLOT FOUND" --no-wrap') #Notify if slot found
+    os.system("open " + str(new_page.ur))
