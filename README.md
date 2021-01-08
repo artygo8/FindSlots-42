@@ -29,9 +29,3 @@ Line 196 <div data-duration="1".... >> if no slots stops at id='calendar' | if s
 -> tag "data-full" can only be found in slot.html and indicates slot find
 
 -> Code could function but was not able to test it yet
-
-### ADD
-
-Run in background but not forever
-
-install zenity on linux too
