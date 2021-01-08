@@ -13,6 +13,12 @@
   ```
   make
   ```
+  Launch in background
+ 
+  ```
+  make hide
+  ```
+  
 ### Problem
 
 How to get number of available slots out of html file? 
