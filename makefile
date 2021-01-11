@@ -1,16 +1,15 @@
+GRN_PRINTF = printf "\033[32m%s\e[m\n"
+
 all: run
 
 env:
-	python3 -m pip install MechanicalSoup
-	python3 -m pip install beautifulsoup4
-	python3 -m pip install lxml
+	@python3 -c "import mechanicalsoup" && ${GRN_PRINTF} "mechanicalsoup installed" || python3 -m pip install MechanicalSoup
+	@python3 -c "from bs4 import BeautifulSoup" && ${GRN_PRINTF} "bs4 installed" || python3 -m pip install beautifulsoup4
+	@python3 -c "import lxml" && ${GRN_PRINTF} "lxml installed" || python3 -m pip install lxml
+	@python3 -c "import chime" && ${GRN_PRINTF} "chime installed" || python3 -m pip install chime
 
 run:
-	@python3 src/main.py
-
-hide:
-	@python3 src/main.py HIDE
-
+	@python3 find_slots.py
 
 
 
