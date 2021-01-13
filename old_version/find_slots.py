@@ -36,7 +36,11 @@ if not "https://projects.intra.42.fr/projects/" in link:
 
 
 browser = mechanicalsoup.Browser()
-login_page = browser.get(link) #We get redirected towards login page
+try:
+    login_page = browser.get(link) #We get redirected towards login page
+except:
+    chime.error()
+    exit("no internet access !")
 html_parser = login_page.soup
 
 form = html_parser.select("form")[0]
@@ -63,14 +67,15 @@ def find_slot(tag):
 while 1:
     try:
         refresh = browser.get(new_page.url)
+        # with open("refresh.html", "w+") as f: f.writelines(str(refresh.content.decode('UTF-8')))
         slot = refresh.soup.find_all(find_slot)
     except:
         chime.error()
         exit()
 
-    if VERBOSE: print(slot, end=" ", flush=True)
+    if VERBOSE: print(len(refresh.content), end=" ", flush=True)
 
-    if slot != [] :
+    if slot != []:
         chime.success()
         os.system("open " + new_page.url)
         break
