@@ -11,7 +11,7 @@ env:
 	brew install firefox
 
 run:
-	@python3 find_slots.py
+	@python3 find_slots_selenium.py
 
 
 #Install brew on mac school
