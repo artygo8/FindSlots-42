@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import getpass, time, chime
 
 class Intra42:
@@ -16,8 +15,6 @@ class Intra42:
         self.driver.find_element_by_id("user_login").send_keys(input("login: "))
         self.driver.find_element_by_id("user_password").send_keys(getpass.getpass("password: "))
         self.driver.find_element_by_name("commit").click()
-        if self.driver.current_url != self.my_url:
-            exit("Invalid login-password combination")
 
     def get_url(self):
         return self.driver.current_url
