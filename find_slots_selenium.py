@@ -1,5 +1,4 @@
 from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
 import getpass, time, chime
 
 class Intra42:
@@ -24,17 +23,20 @@ class Intra42:
 
     def is_slot_present(self):
         self.driver.refresh()
+        time.sleep(5) # to be sure the load is done.
         return self.driver.find_element_by_class_name("fc-time-grid-event")
 
-intra = Intra42()
-intra.login()
 
-while 1:
-    try:
-        intra.is_slot_present()
-        chime.success()
-        print("HOOORRAAAYYY")
-        break
-    except:
-        print('.', end='', flush=True)
-    time.sleep(40)
+if __name__ == "__main__":
+
+    intra = Intra42()
+    intra.login()
+
+    while 1:
+        try:
+            intra.is_slot_present()
+            chime.success()
+            print('!', end='', flush=True)
+        except:
+            print('.', end='', flush=True)
+        time.sleep(40)

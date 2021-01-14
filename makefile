@@ -6,7 +6,6 @@ env:
 	@python3 -c "import chime" && ${GRN_PRINTF} "chime installed" || python3 -m pip install chime
 	@python3 -c "import selenium" && ${GRN_PRINTF} "selenium installed" || python3 -m pip install selenium
 	@python3 -c "import getpass" && ${GRN_PRINTF} "getpass installed" || python3 -m pip install getpass
-	brew install chromedriver
 	brew install geckodriver
 	brew install firefox
 
