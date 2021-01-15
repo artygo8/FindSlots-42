@@ -6,8 +6,8 @@ SLOTS_URL=""
 class Intra42:
 
     def __init__(self):
-        self.driver = webdriver.Firefox()
         self.my_url = SLOTS_URL or input("slots url: ")
+        self.driver = webdriver.Firefox()
         self.login_url = "https://signin.intra.42.fr/users/sign_in"
         self.driver.get (self.my_url)
 
