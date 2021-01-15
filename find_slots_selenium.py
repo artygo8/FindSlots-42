@@ -40,7 +40,7 @@ if __name__ == "__main__":
         print("You have 60 seconds to connect!")
         time.sleep(60)
 
-    if intra.get_url != intra.my_url:
+    if intra.get_url() != intra.my_url:
         print("You can't access to the page:", intra.my_url)
         chime.error()
         exit()
