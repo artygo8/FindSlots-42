@@ -1,11 +1,14 @@
 from selenium import webdriver
 import getpass, time, chime
 
+SLOTS_URL=""
+
 class Intra42:
 
     def __init__(self):
         self.driver = webdriver.Firefox()
-        self.my_url = "https://projects.intra.42.fr/projects/cpp-module-07/slots?team_id=3424654"
+        self.my_url = SLOTS_URL or input("slots url: ")
+        self.login_url = "https://signin.intra.42.fr/users/sign_in"
         self.driver.get (self.my_url)
 
     def __del__(self):
@@ -20,7 +23,7 @@ class Intra42:
         return self.driver.current_url
 
     def is_connected(self):
-        return self.get_url() == self.my_url
+        return self.get_url() != self.login_url
 
     def is_slot_present(self):
         self.driver.refresh()
@@ -30,11 +33,17 @@ class Intra42:
 
 if __name__ == "__main__":
 
+    chime.theme("mario")
     intra = Intra42()
 
     while not intra.is_connected():
         print("You have 60 seconds to connect!")
         time.sleep(60)
+
+    if intra.get_url != intra.my_url:
+        print("You can't access to the page:", intra.my_url)
+        chime.error()
+        exit()
 
     while 1:
         try:
@@ -43,4 +52,4 @@ if __name__ == "__main__":
             print('!', end='', flush=True)
         except:
             print('.', end='', flush=True)
-        time.sleep(40)
+        time.sleep(30)

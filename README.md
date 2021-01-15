@@ -20,4 +20,4 @@
 
 ### Explained
 
-Once a slot is found you will be redirected to the slot page
+While the program is working, it is displaying dots, just so you know its active. Once a slot is found, a *!* will appear and you will hear a sound.
