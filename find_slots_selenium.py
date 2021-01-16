@@ -40,12 +40,7 @@ if __name__ == "__main__":
         print("You have 60 seconds to connect!")
         time.sleep(60)
 
-    if intra.get_url() != intra.my_url:
-        print("You can't access to the page:", intra.my_url)
-        chime.error()
-        exit()
-
-    while 1:
+    while intra.get_url()== intra.my_url:
         try:
             intra.is_slot_present()
             chime.success()
@@ -53,3 +48,6 @@ if __name__ == "__main__":
         except:
             print('.', end='', flush=True)
         time.sleep(30)
+
+    print("You can't access to the page:", intra.my_url)
+    chime.error()
