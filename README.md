@@ -1,6 +1,6 @@
 # Find slots
 
-*The first version of this code was not from me, it was mostly taken from https://github.com/artainmo/find_slots, to which i added little things that i find useful, such as sound warnings and general monitoring.*
+*The first version of this code was not from me, it was from https://github.com/artainmo/find_slots, but finally I changed it all.*
 
 **Right now the script is using selenium.**
 
