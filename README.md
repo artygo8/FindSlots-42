@@ -26,12 +26,12 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
 
 ## Current requirements
 
- - [x] **python selenium**      `# main part, actual bot`
- - [x] **python time**          `# waiting`
- - [x] **python chime**         `# for the sound notifications`
- - [x] **python signal**        `# for proper interruption handling`
- - [x] **Firefox**              `# browser used by the bot`
- - [x] **geckodriver**          `# needed by Selenium`
+ - **python selenium**      `# main part, actual bot`
+ - **python time**          `# waiting`
+ - **python chime**         `# for the sound notifications`
+ - **python signal**        `# for proper interruption handling`
+ - **Firefox**              `# browser used by the bot`
+ - **geckodriver**          `# needed by Selenium`
 
 ## What you should expect
 
