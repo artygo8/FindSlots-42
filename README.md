@@ -24,6 +24,10 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
   make
   ```
 
+## Screenshot
+
+![screenshot](screenshot-42slot-finder.png)
+
 ## Current requirements
 
  - **python selenium**      `# main part, actual bot`
