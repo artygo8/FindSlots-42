@@ -36,7 +36,3 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
  - **python signal**        `# for proper interruption handling`
  - **Firefox**              `# browser used by the bot`
  - **geckodriver**          `# needed by Selenium`
-
-## What you should expect
-
-While the program is working, it is displaying dots, just so you know its active. Once a slot is found, a *!* will appear and you will hear a sound.
