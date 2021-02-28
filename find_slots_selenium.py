@@ -5,10 +5,11 @@ import time, chime, signal
 # you can change these
 SLOTS_URL = ""          # if not set, will be asked as input.
 REFRESH_RATE = 35       # in seconds, be reasonable, please...
+TIME_TO_CONNECT = 20
 
 # do not change these !
 LOGIN_URL = "https://signin.intra.42.fr/users/sign_in"
-CHIME_THEME = "mario"
+CHIME_THEME = "zelda"
 
 
 # Colors
@@ -43,10 +44,16 @@ class Intra42:
         return self.driver.current_url
 
     def is_connected(self):
-        return self.get_url() != self.login_url
+        try:
+            return self.get_url() != self.login_url
+        except:
+            exit(colored(RED,"browser closed"))
 
     def is_slot_present(self):
-        self.driver.refresh()
+        try:
+            self.driver.refresh()
+        except:
+            exit(colored(RED,"browser closed"))
         time.sleep(5) # to be sure the load is done.
         return self.driver.find_element_by_class_name("fc-time-grid-event")
 
@@ -65,8 +72,8 @@ if __name__ == "__main__":
     intra = Intra42()
 
     while not intra.is_connected():
-        print(colored(GREEN,"You have 60 seconds to connect."))
-        time.sleep(60)
+        print(colored(GREEN,f"You have {TIME_TO_CONNECT} seconds to connect."))
+        time.sleep(TIME_TO_CONNECT)
 
     print(colored(GREEN,"You can now hide the browser, but do not close it..."))
 
