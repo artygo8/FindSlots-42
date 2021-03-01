@@ -4,12 +4,14 @@ import time, chime, signal
 
 # you can change these
 SLOTS_URL = ""          # if not set, will be asked as input.
-REFRESH_RATE = 35       # in seconds, be reasonable, please...
-TIME_TO_CONNECT = 20
+REFRESH_RATE = 42       # in seconds, be reasonable, please...
+TIME_TO_CONNECT = 42
+
+CHIME_THEME = "zelda"   # mario, zelda, material, big-sur or chime
+
 
 # do not change these !
 LOGIN_URL = "https://signin.intra.42.fr/users/sign_in"
-CHIME_THEME = "zelda"
 
 
 # Colors
@@ -23,29 +25,18 @@ colored = lambda rgb, text : f"\033[38;2;{rgb[0]};{rgb[1]};{rgb[2]}m{text}\033[3
 class Intra42:
 
     def __init__(self):
-        self.driver_ready = False
-        self.my_url = SLOTS_URL or input(colored(GREEN,"slots url (URL of the slot page for your project):\n"))
-        self.login_url = LOGIN_URL
-        self.driver = webdriver.Firefox()
-        self.driver_ready = True
-        self.driver.get(self.my_url)
+        try:
+            self.driver = webdriver.Firefox()
+            self.driver.get(LOGIN_URL)
+        except:
+            exit(colored(RED,"Failed to start the webdriver"))
 
     def __del__(self):
-        if self.driver_ready:
-            self.driver.quit()
-
-    # def login(self):
-    #     import getpass # we don't need that in the current program
-    #     self.driver.find_element_by_id("user_login").send_keys(input("login: "))
-    #     self.driver.find_element_by_id("user_password").send_keys(getpass.getpass("password: "))
-    #     self.driver.find_element_by_name("commit").click()
-
-    def get_url(self):
-        return self.driver.current_url
+        self.driver.quit()
 
     def is_connected(self):
         try:
-            return self.get_url() != self.login_url
+            return "slots" in self.driver.current_url
         except:
             exit(colored(RED,"browser closed"))
 
@@ -54,30 +45,31 @@ class Intra42:
             self.driver.refresh()
         except:
             exit(colored(RED,"browser closed"))
-        time.sleep(5) # to be sure the load is done.
+        time.sleep(5) # to be sure that the page is well loaded.
         return self.driver.find_element_by_class_name("fc-time-grid-event")
 
+
+def signal_handler(sig, frame):
+    chime.error()
+    exit(colored(BLUE, "\ngood-bye !"))
+
+
+# MAIN
 
 if __name__ == "__main__":
 
     chime.theme(CHIME_THEME)
-
-    def signal_handler(sig, frame):
-        chime.error()
-        exit(colored(BLUE, "\ngood-bye !"))
-
     signal.signal(signal.SIGINT, signal_handler)
-
     chime.info()
     intra = Intra42()
 
     while not intra.is_connected():
-        print(colored(GREEN,f"You have {TIME_TO_CONNECT} seconds to connect."))
+        print(colored(GREEN,f"You have {TIME_TO_CONNECT} seconds to get to your slots page."))
         time.sleep(TIME_TO_CONNECT)
 
-    print(colored(GREEN,"You can now hide the browser, but do not close it..."))
+    print(colored(GREEN, "You can now hide the browser, but close it only when you are done..."))
 
-    while intra.get_url() == intra.my_url:
+    while intra.is_connected():
         try:
             intra.is_slot_present()
             chime.success()
@@ -86,5 +78,15 @@ if __name__ == "__main__":
             print('.', end='', flush=True)
         time.sleep(REFRESH_RATE)
 
-    print("You can't access to the page:", intra.my_url)
+    print(colored(RED,"\nCan't access to the slots page anymore."))
     chime.warning()
+
+
+# old things
+"""
+def login(self):
+    import getpass # we don't need that in the current program
+    self.driver.find_element_by_id("user_login").send_keys(input("login: "))
+    self.driver.find_element_by_id("user_password").send_keys(getpass.getpass("password: "))
+    self.driver.find_element_by_name("commit").click()
+"""

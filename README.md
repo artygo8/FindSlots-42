@@ -6,7 +6,7 @@ Small bot for checking if there are correction slots on the 42 intranet.
 
 This program uses selenium to launch a Firefox browser.
 
-It will then refresh the page every minute and notify with a sound when there is an available slot on the page.
+It will then refresh the page every minute or so and notify with a sound when there is an available slot on the page.
 
 It also shows progress in the terminal like so : `.....!.` where `.` means that there are no available slots and `!` means the bot found a slot on the page.
 
@@ -23,6 +23,8 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
   ```
   make
   ```
+
+  Once launched, you will get the instructions.
 
 ## Screenshot
 
