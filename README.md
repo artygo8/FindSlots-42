@@ -1,14 +1,6 @@
-# Find slots
+# 42-slot-finder
 
-Small bot for checking if there are correction slots on the 42 intranet.
-
-## Technical details
-
-This program uses selenium to launch a Firefox browser.
-
-It will then refresh the page every minute or so and notify with a sound when there is an available slot on the page.
-
-It also shows progress in the terminal like so : `.....!.` where `.` means that there are no available slots and `!` means the bot found a slot on the page.
+Bot that verifies if correction slots are to be found on a specific 42 school project.
 
 ## Usage
 
@@ -26,9 +18,17 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
 
   Once launched, you will get the instructions.
 
+## Explained
+
+  This program uses selenium to launch a Firefox browser.
+
+  It will then refresh the page to find correction slots every 42 seconds and notify with a sound and eventually email when there is an available slot on the page.
+
+  It also shows progress in the terminal like so : `.....!.` where `.` means that there are no available slots and `!` means the bot found a slot on the page.
+
 ## Screenshot
 
-![screenshot](screenshot-42slot-finder.png)
+![screenshot](.other/screenshot-42slot-finder.png)
 
 ## Current requirements
 
@@ -36,5 +36,6 @@ It also shows progress in the terminal like so : `.....!.` where `.` means that 
  - **python time**          `# waiting`
  - **python chime**         `# for the sound notifications`
  - **python signal**        `# for proper interruption handling`
+ - **python dotenv**        `# to keep track of email credentials in .env`
  - **Firefox**              `# browser used by the bot`
  - **geckodriver**          `# needed by Selenium`
