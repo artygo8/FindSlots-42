@@ -28,7 +28,7 @@ Bot that verifies if correction slots are to be found on a specific 42 school pr
 
 ## Screenshot
 
-![screenshot](.other/screenshot-42slot-finder.png)
+![screenshot](.other/ScreenShot.png)
 
 ## Current requirements
 
